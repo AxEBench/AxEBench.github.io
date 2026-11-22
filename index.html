@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,240 +14,178 @@
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='80'>🪓</text></svg>">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="static/css/bulma.min.css">
-  <link rel="stylesheet" href="static/css/index.css">
-  <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <script defer src="static/js/fontawesome.all.min.js"></script>
-  <style>
-    .axe-agent{background:#fff3c4;padding:0 .25em;border-radius:3px}
-    .axe-env{background:#d4f4fb;padding:0 .25em;border-radius:3px}
-    .figure-block{margin:2rem 0}
-    .figure-block img{width:100%;border-radius:8px;box-shadow:0 2px 12px rgba(0,0,0,.08)}
-    .figure-block .caption{font-size:.95rem;color:#4a4a4a;margin-top:.6rem;text-align:justify}
-    .stat-row .column>.stat-box{border:1.5px solid #cbd5e1;border-radius:10px;padding:1rem .5rem;background:#fff;height:100%}
-    .stat-row .stat{font-size:2rem;font-weight:800;color:#2563eb}
-    .stat-row .label{font-size:.9rem;color:#555}
-    table.lb{width:100%;font-size:.95rem}
-    table.lb th,table.lb td{text-align:center;padding:.35em .5em}
-    table.lb td:first-child,table.lb th:first-child{text-align:left}
-    table.lb thead th{border-bottom:2px solid #333}
-    table.lb tbody tr:nth-child(even){background:#f7f8fa}
-    .placeholder{opacity:.55;pointer-events:none}
-    .formula{font-family:Georgia,serif;font-size:1.15rem;text-align:center;margin:1rem 0}
-  </style>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="static/css/axe.css">
+  <script>try{var t=localStorage.getItem('axe-theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 </head>
 <body>
-<main id="main-content">
+<div id="progress"></div>
+<nav><div class="wrap">
+  <a class="brand" href="#top">A<span class="x">×</span>E BENCH</a>
+  <div class="links">
+    <a href="#abstract">Abstract</a><a href="#benchmark">Benchmark</a><a href="#evaluation">Evaluation</a><a href="#leaderboard">Leaderboard</a><a href="#findings">Findings</a><a href="#bibtex">Citation</a>
+  </div>
+  <button id="theme" aria-label="Toggle light and dark theme"><i class="fas fa-adjust"></i></button>
+</div></nav>
 
-<section class="hero">
-  <div class="hero-body">
-    <div class="container is-max-desktop">
-      <div class="columns is-centered">
-        <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">AxE: Benchmarking Agent–Environment Generalization of Video World Models via Grounded Events</h1>
-          <!-- AUTHORS-START -->
-          <div class="is-size-5 publication-authors">
-            <span class="author-block">Haiyu Xu<sup>1,2,*</sup>,</span>
-            <span class="author-block">Yiyang Chen<sup>1,*</sup>,</span>
-            <span class="author-block">Jiayi Zhou<sup>1,2</sup>,</span>
-            <span class="author-block">Jiaming Ji<sup>1,2</sup>,</span>
-            <span class="author-block">Juntao Dai<sup>1,2</sup>,</span>
-            <span class="author-block">Yaodong Yang<sup>1,†</sup>,</span>
-            <span class="author-block">Boyuan Chen<sup>1,2,3,†</sup></span>
-          </div>
-          <div class="is-size-5 publication-authors">
-            <span class="author-block"><sup>1</sup>Peking University &nbsp; <sup>2</sup>Physis &nbsp; <sup>3</sup>Beijing Academy of Artificial Intelligence</span>
-            <span class="eql-cntrb"><small><br><sup>*</sup>Equal contribution &nbsp; <sup>†</sup>Corresponding authors</small></span>
-          </div>
-          <!-- AUTHORS-END -->
-          <div class="publication-links">
-            <!-- TODO: replace # with the arXiv PDF link -->
-            <span class="link-block"><a href="#" class="external-link button is-normal is-rounded is-dark placeholder"><span class="icon"><i class="fas fa-file-pdf"></i></span><span>Paper (soon)</span></a></span>
-            <!-- TODO: replace # with https://arxiv.org/abs/XXXX.XXXXX -->
-            <span class="link-block"><a href="#" class="external-link button is-normal is-rounded is-dark placeholder"><span class="icon"><i class="ai ai-arxiv"></i></span><span>arXiv (soon)</span></a></span>
-            <span class="link-block"><a href="https://github.com/AxEBench/WM-PerceptHarness" target="_blank" class="external-link button is-normal is-rounded is-dark"><span class="icon"><i class="fab fa-github"></i></span><span>Code</span></a></span>
-            <!-- TODO: replace # with the dataset link (e.g. Hugging Face) -->
-            <span class="link-block"><a href="#" class="external-link button is-normal is-rounded is-dark placeholder"><span class="icon"><i class="fas fa-database"></i></span><span>Data (soon)</span></a></span>
-            <span class="link-block"><a href="#leaderboard" class="external-link button is-normal is-rounded is-dark"><span class="icon"><i class="fas fa-trophy"></i></span><span>Leaderboard</span></a></span>
-          </div>
-        </div>
-      </div>
+<header class="hero" id="top"><div class="wrap">
+  <div class="eyebrow">Video world models · Generalization benchmark</div>
+  <h1>AxE: <span class="grad">Benchmarking Agent–Environment Generalization</span> of Video World Models via Grounded Events</h1>
+  <!-- AUTHORS-START -->
+  <div class="authors">
+    <div class="names">
+      <span>Haiyu Xu<sup>1,2,*</sup></span><span>Yiyang Chen<sup>1,*</sup></span><span>Jiayi Zhou<sup>1,2</sup></span><span>Jiaming Ji<sup>1,2</sup></span><span>Juntao Dai<sup>1,2</sup></span><span>Yaodong Yang<sup>1,†</sup></span><span>Boyuan Chen<sup>1,2,3,†</sup></span>
+    </div>
+    <div class="aff"><sup>1</sup>Peking University &nbsp; <sup>2</sup>Physis &nbsp; <sup>3</sup>Beijing Academy of Artificial Intelligence<br><sup>*</sup>Equal contribution &nbsp; <sup>†</sup>Corresponding authors</div>
+  </div>
+  <!-- AUTHORS-END -->
+  <div class="btns">
+    <!-- TODO: replace # with the paper PDF / arXiv / data links and remove the "soon" class -->
+    <a class="btn soon" href="#"><i class="fas fa-file-pdf"></i>Paper (soon)</a>
+    <a class="btn soon" href="#"><i class="ai ai-arxiv"></i>arXiv (soon)</a>
+    <a class="btn" href="https://github.com/AxEBench/WM-PerceptHarness" target="_blank"><i class="fab fa-github"></i>Code</a>
+    <a class="btn soon" href="#"><i class="fas fa-database"></i>Data (soon)</a>
+    <a class="btn primary" href="#leaderboard"><i class="fas fa-trophy"></i>Leaderboard</a>
+  </div>
+
+  <div class="explorer">
+    <div class="eyebrow" style="margin-bottom:10px">Try it · flip a side and watch the same model</div>
+    <div class="toggles">
+      <button class="tg a" id="tgA" aria-pressed="false"><span class="sw"></span>Change the agent</button>
+      <button class="tg e" id="tgE" aria-pressed="false"><span class="sw"></span>Change the environment</button>
+      <span class="regime" id="regime">Original</span>
+    </div>
+    <div class="stage">
+      <img class="on" data-k="00" src="static/images/pair_original.jpg" alt="Original task: keep the marker wrapped in a towel while moving it">
+      <img data-k="10" src="static/images/pair_agent.jpg" alt="Agent changed: remove the marker from its wrapping">
+      <img data-k="01" src="static/images/pair_env.jpg" alt="Environment changed: marker wrapped with paper">
+      <img data-k="11" src="static/images/pair_joint.jpg" alt="Joint change: remove the marker from its paper wrapping">
+    </div>
+    <div class="verdict" id="verdict"></div>
+  </div>
+</div></header>
+
+<section><div class="wrap">
+  <div class="stats reveal">
+    <div class="stat"><b data-count="1103">1,103</b><span>recordings</span></div>
+    <div class="stat"><b data-count="981">981</b><span>original–variant pairs</span></div>
+    <div class="stat"><b data-count="8">8</b><span>agent &amp; environment factors</span></div>
+    <div class="stat"><b data-count="20">20</b><span>world models evaluated</span></div>
+  </div>
+</div></section>
+
+<section class="alt" id="abstract"><div class="wrap narrow reveal">
+  <div class="eyebrow">Abstract</div>
+  <h2>Edge cases are not the long tail; they are the norm.</h2>
+  <div class="abstract">
+    <p>An embodied system deployed across changing environments, bodies, objects, and tasks will routinely encounter combinations that were absent from its training data. General-purpose physical intelligence therefore requires world models that reuse prior knowledge, predict consequences, and adapt with little or no additional training. Yet current evaluations of conditional video generation emphasize visual quality, prompt alignment, or isolated physical plausibility, leaving systematic generalization difficult to measure.</p>
+    <p>We introduce <b>AxE Bench</b>, a benchmark that organizes condition changes along eight factors of the acting agent and of its environment, and pairs every original condition with controlled variants that change one side or both. <b>WBench-plus</b> applies the same structure to an existing multi-turn benchmark, pairing each WBench scenario with variants on the environment side, through its world setting or camera behavior, or on the agent side, through its interaction instructions. To score generated futures, we develop an evaluation harness that combines vision-language reasoning with targeted computer-vision evidence, converting each video into temporally localized events and comparing generated events with reference events in both time and semantics.</p>
+    <p>We summarize each model with the <b>AxE Score</b>, event Fidelity weighted by its Stability across original–variant pairs. Across twenty models, generated events match reference events far more often in timing than in content: no model exceeds a Fidelity of 13.01, the highest Stability is 0.55, and the highest AxE Score is 7.10. Together, these components turn world-model generalization from an informal aspiration into a falsifiable evaluation program for real and simulated interactions.</p>
+  </div>
+</div></section>
+
+<section id="benchmark"><div class="wrap">
+  <div class="reveal">
+    <div class="eyebrow">Benchmark</div>
+    <h2>The Agent × Environment generalization space</h2>
+    <p class="lead">Every change is described relative to an original condition. Which side a variant changes defines four regimes: original, agent generalization, environment generalization, and agent–environment composition.</p>
+  </div>
+  <div class="reveal">
+    <p class="side-label"><span class="dot" style="background:var(--agent)"></span>Agent-side factors</p>
+    <div class="cards" style="--c:var(--agent)">
+      <div class="fcard"><span class="n">16 pairs</span><div class="id">A1</div><h4>Embodiment</h4><p>e.g. Franka vs. dual UR5e + XHand</p></div>
+      <div class="fcard"><span class="n">414 pairs</span><div class="id">A2</div><h4>Action semantics</h4><p>e.g. approach vs. push</p></div>
+      <div class="fcard"><span class="n">331 pairs</span><div class="id">A3</div><h4>Spatial</h4><p>e.g. small tilt vs. larger tilt</p></div>
+      <div class="fcard"><span class="n">98 pairs</span><div class="id">A4</div><h4>Temporal</h4><p>e.g. horizontal-first vs. vertical-first</p></div>
+    </div>
+    <p class="side-label"><span class="dot" style="background:var(--env)"></span>Environment-side factors</p>
+    <div class="cards" style="--c:var(--env)">
+      <div class="fcard"><span class="n">329 pairs</span><div class="id">E1</div><h4>Objects</h4><p>e.g. cube vs. pencil box</p></div>
+      <div class="fcard"><span class="n">637 pairs</span><div class="id">E2</div><h4>Initial state</h4><p>e.g. near vs. far gap</p></div>
+      <div class="fcard"><span class="n">10 pairs</span><div class="id">E3</div><h4>Dynamics</h4><p>e.g. low vs. high friction</p></div>
+      <div class="fcard"><span class="n">559 pairs</span><div class="id">E4</div><h4>Observation</h4><p>e.g. baseline view vs. +15° view</p></div>
     </div>
   </div>
-</section>
+  <figure class="reveal"><div class="fig"><img src="static/images/fig_main_pic.jpg" alt="Data taxonomy and coverage" loading="lazy"></div>
+    <figcaption><b>Data taxonomy and coverage.</b> Eight factor families, each shown with an original–variant pair and the number of pairs that change it, and the breakdown of the 1,103 recordings by capture setup. Click any figure to enlarge.</figcaption></figure>
+  <figure class="reveal"><div class="fig"><img src="static/images/fig_wbench_plus.jpg" alt="Construction of WBench-plus" loading="lazy"></div>
+    <figcaption><b>WBench-plus.</b> Representative original–variant pairs built on WBench scenarios. Agent-side variants change interaction instructions; environment-side variants change the world setting, rendering, or camera behavior.</figcaption></figure>
+</div></section>
 
-<section class="hero teaser">
-  <div class="container is-max-desktop">
-    <div class="hero-body">
-      <img src="static/images/fig_teaser_final.jpg" alt="Generated frames for an original task and its agent, environment and joint variants" style="max-width:640px;width:100%;display:block;margin:0 auto">
-      <h2 class="subtitle has-text-centered" style="margin-top:1rem">
-        <b>Success in one condition does not guarantee generalization.</b> A model that keeps the marker wrapped in the original task fails when the
-        <span class="axe-agent">agent</span> side, the <span class="axe-env">environment</span> side, or both change.
-      </h2>
-    </div>
+<section class="alt" id="evaluation"><div class="wrap">
+  <div class="reveal">
+    <div class="eyebrow">Evaluation</div>
+    <h2>Grounded event evaluation</h2>
+    <p class="lead">Each video becomes a list of timestamped events, checked against visual evidence, then matched to the reference events in both timing and content.</p>
   </div>
-</section>
-
-<section class="section hero is-light">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Abstract</h2>
-        <div class="content has-text-justified">
-          <p>Edge cases are not the long tail; they are the norm. An embodied system deployed across changing environments, bodies, objects, and tasks will routinely encounter combinations that were absent from its training data. General-purpose physical intelligence therefore requires world models that reuse prior knowledge, predict consequences, and adapt with little or no additional training. Yet current evaluations of conditional video generation emphasize visual quality, prompt alignment, or isolated physical plausibility, leaving systematic generalization difficult to measure.</p>
-          <p>We introduce <b>AxE Bench</b>, a benchmark that organizes condition changes along eight factors of the acting agent and of its environment, and pairs every original condition with controlled variants that change one side or both. <b>WBench-plus</b> applies the same structure to an existing multi-turn benchmark, pairing each WBench scenario with variants on the environment side, through its world setting or camera behavior, or on the agent side, through its interaction instructions. To score generated futures, we develop an evaluation harness that combines vision-language reasoning with targeted computer-vision evidence, converting each video into temporally localized events and comparing generated events with reference events in both time and semantics.</p>
-          <p>We summarize each model with the <b>AxE Score</b>, event Fidelity weighted by its Stability across original–variant pairs. Across twenty models, generated events match reference events far more often in timing than in content: no model exceeds a Fidelity of 13.01, the highest Stability is 0.55, and the highest AxE Score is 7.10. Together, these components turn world-model generalization from an informal aspiration into a falsifiable evaluation program for real and simulated interactions.</p>
-        </div>
-      </div>
-    </div>
+  <div class="steps reveal">
+    <div class="step"><h4>VLM event draft</h4><p>A vision-language model drafts events and flags claims that need checking.</p></div>
+    <div class="step"><h4>Visual review + SAM</h4><p>Question-driven evidence: target selection, mask check, local tracking.</p></div>
+    <div class="step"><h4>VLM revision</h4><p>Events are revised using only the accepted evidence.</p></div>
+    <div class="step"><h4>Match and score</h4><p>Generated events are matched to reference events in time and semantics.</p></div>
   </div>
-</section>
+  <div class="formula reveal"><span class="r">AxE Score</span>=<span>Fidelity</span>×<span>Stability</span></div>
+  <p class="note reveal" style="text-align:center">Fidelity: how well generated events match the reference. Stability: how well that holds across original–variant pairs.</p>
+  <figure class="reveal"><div class="fig"><img src="static/images/fig_event_scoring.jpg" alt="Grounded event evaluation pipeline" loading="lazy"></div></figure>
+</div></section>
 
-<section class="section">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered has-text-centered stat-row">
-      <div class="column"><div class="stat-box"><div class="stat">1,103</div><div class="label">recordings</div></div></div>
-      <div class="column"><div class="stat-box"><div class="stat">981</div><div class="label">original–variant pairs</div></div></div>
-      <div class="column"><div class="stat-box"><div class="stat">8</div><div class="label">agent &amp; environment factors</div></div></div>
-      <div class="column"><div class="stat-box"><div class="stat">20</div><div class="label">world models evaluated</div></div></div>
-    </div>
+<section id="leaderboard"><div class="wrap">
+  <div class="reveal">
+    <div class="eyebrow">Leaderboard</div>
+    <h2>Results on AxE Bench</h2>
+    <p class="lead">Event scores ×100 on the 1,103 recordings; Stability on the 981 pairs. Click a column header to sort.</p>
+    <div class="tabs"><button class="tab on" data-g="t2v">Text-and-image-to-video</button><button class="tab" data-g="cam">Camera-conditioned</button></div>
+    <div class="lbwrap"><table>
+      <thead><tr><th>#</th><th data-k="m">Model</th><th data-k="axe">AxE Score</th><th data-k="fid">Fidelity</th><th data-k="stab">Stability</th><th data-k="tim">Timing</th><th data-k="con">Content</th></tr></thead>
+      <tbody id="lbody"></tbody>
+    </table></div>
+    <p class="note">Green marks the best value in each column within the group. For models with scores close to zero, Stability rests on few pairs. Complementary metrics (PSNR, motion smoothness, semantic adherence, physical commonsense, CamMC, dynamic degree, GeCo) are reported in the paper.</p>
   </div>
-</section>
+</div></section>
 
-<section class="section" style="padding-top:0">
-  <div class="container is-max-widescreen">
-    <h2 class="title is-3 has-text-centered">The Agent × Environment Generalization Space</h2>
-    <div class="content is-max-desktop" style="max-width:960px;margin:0 auto">
-      <p>Every change is described relative to an original condition. <span class="axe-agent">Agent-side</span> factors are embodiment, action semantics, spatial and temporal structure; <span class="axe-env">environment-side</span> factors are objects, initial state, dynamics and observation. Which side a variant changes defines four regimes: original, agent generalization, environment generalization, and agent–environment composition.</p>
-    </div>
-    <div class="figure-block">
-      <img src="static/images/fig_main_pic.jpg" alt="Data taxonomy and coverage" loading="lazy">
-      <p class="caption"><b>Data taxonomy and coverage.</b> Eight factor families, each shown with an original–variant pair and the number of pairs that change it, and the breakdown of recordings by capture setup.</p>
-    </div>
-    <div class="figure-block">
-      <img src="static/images/fig_wbench_plus.jpg" alt="Construction of WBench-plus" loading="lazy">
-      <p class="caption"><b>WBench-plus.</b> Representative original–variant pairs built on WBench scenarios. Agent-side variants change interaction instructions; environment-side variants change the world setting, rendering, or camera behavior.</p>
-    </div>
+<section class="alt" id="findings"><div class="wrap">
+  <div class="reveal">
+    <div class="eyebrow">Findings</div>
+    <h2>What the pairs reveal</h2>
   </div>
-</section>
-
-<section class="section hero is-light">
-  <div class="container is-max-widescreen">
-    <h2 class="title is-3 has-text-centered">Grounded Event Evaluation</h2>
-    <div class="content" style="max-width:960px;margin:0 auto">
-      <p>A vision-language model turns each video into timestamped events: it drafts events and flags claims that need checking, gathers question-driven SAM evidence (target selection, mask check, local tracking) for those claims, and revises the events with the accepted evidence. Generated events are then matched to reference events in both <b>timing</b> and <b>content</b>, giving the event <b>Fidelity</b>. <b>Stability</b> measures how well Fidelity holds across original–variant pairs.</p>
-      <p class="formula">AxE Score = Fidelity × Stability</p>
-    </div>
-    <div class="figure-block">
-      <img src="static/images/fig_event_scoring.jpg" alt="Grounded event evaluation pipeline" loading="lazy">
-    </div>
+  <div class="finds reveal">
+    <div class="find"><div class="no">01</div><div><h4>Reproducing the reference events is hard for every model</h4><p>Generated events match reference events far more often in timing than in content. No model exceeds a Fidelity of 13.01.</p></div></div>
+    <div class="find"><div class="no">02</div><div><h4>Even the strongest models hold about half their score within pairs</h4><p>Stability ranges from 0.39 to 0.55 for the five highest models. Wan 3.0 scores 7.10 on AxE against a Fidelity of 13.01.</p></div></div>
+    <div class="find"><div class="no">03</div><div><h4>Capable is not the same as robust</h4><p>Seedance 2.5 is within one Fidelity point of the other commercial models, yet has the largest original–variant gap of all twenty models. A small gap at a low score is not robustness either.</p></div></div>
+    <div class="find"><div class="no">04</div><div><h4>The design transfers to multi-turn tasks</h4><p>On WBench-plus the highest Stability is 0.67 among camera-conditioned models and 0.53 among text-and-image-to-video models.</p></div></div>
   </div>
-</section>
-
-<section class="section" id="leaderboard">
-  <div class="container is-max-desktop">
-    <h2 class="title is-3 has-text-centered">Leaderboard</h2>
-    <p class="has-text-centered" style="margin-bottom:1.5rem">Event scores ×100 on the 1,103 recordings; Stability on the 981 pairs. Rows sorted by Fidelity, as in the paper. Best per group in bold.</p>
-    <h3 class="title is-5">Text-and-image-to-video</h3>
-    <div class="table-container">
-    <table class="table lb">
-      <thead><tr><th>Model</th><th>AxE Score ↑</th><th>Fidelity ↑</th><th>Stability ↑</th><th>Timing ↑</th><th>Content ↑</th></tr></thead>
-      <tbody>
-<tr data-g="T2V"><td>Wan 3.0</td><td><b>7.10</b></td><td><b>13.01</b></td><td><b>0.55</b></td><td>49.71</td><td><b>26.16</b></td></tr>
-<tr data-g="T2V"><td>HappyHorse 1.1</td><td>6.79</td><td>12.55</td><td>0.54</td><td><b>52.92</b></td><td>23.72</td></tr>
-<tr data-g="T2V"><td>Kling 4.0</td><td>5.98</td><td>12.26</td><td>0.49</td><td>49.92</td><td>24.56</td></tr>
-<tr data-g="T2V"><td>Seedance 2.5</td><td>5.12</td><td>12.22</td><td>0.42</td><td>52.26</td><td>23.38</td></tr>
-<tr data-g="T2V"><td>MiniMax H3</td><td>3.97</td><td>10.06</td><td>0.39</td><td>52.04</td><td>19.30</td></tr>
-<tr data-g="T2V"><td>LTX-2.5-Distilled</td><td>1.93</td><td>5.59</td><td>0.35</td><td>41.06</td><td>13.61</td></tr>
-<tr data-g="T2V"><td>VPP2</td><td>0.53</td><td>2.98</td><td>0.18</td><td>45.02</td><td>6.57</td></tr>
-<tr data-g="T2V"><td>Cosmos3-Super</td><td>0.72</td><td>2.82</td><td>0.25</td><td>43.31</td><td>6.52</td></tr>
-<tr data-g="T2V"><td>Wan2.2-TI2V-5B</td><td>0.84</td><td>2.78</td><td>0.30</td><td>38.75</td><td>7.18</td></tr>
-<tr data-g="T2V"><td>HunyuanVideo-1.5</td><td>0.31</td><td>1.73</td><td>0.18</td><td>42.39</td><td>4.09</td></tr>
-<tr data-g="T2V"><td>Cosmos-Predict2.5-2B</td><td>0.59</td><td>1.57</td><td>0.37</td><td>44.75</td><td>3.52</td></tr>
-<tr data-g="T2V"><td>GigaWorld-0</td><td>0.28</td><td>1.49</td><td>0.19</td><td>40.95</td><td>3.61</td></tr>
-<tr data-g="T2V"><td>Cosmos3-Nano</td><td>0.04</td><td>1.48</td><td>0.03</td><td>42.19</td><td>3.52</td></tr>
-      </tbody>
-    </table>
+  <figure class="reveal"><div class="fig"><img src="static/images/fig_case_analysis.jpg" alt="Typical examples of original and variant generations" loading="lazy"></div>
+    <figcaption><b>Typical examples.</b> Key frames for the original condition (left) and the variant condition (middle), with their Fidelity, next to the reference recording of the variant (right). Changed factors: observation, action semantics, and initial state.</figcaption></figure>
+  <div class="gal">
+    <div>
+      <figure class="reveal"><div class="fig"><img src="static/images/fig_pair_outcomes.png" alt="Fidelity on original vs variant conditions" loading="lazy"></div>
+        <figcaption><b>Fidelity on original and variant conditions.</b> A model that generalizes scores high on both sides with a small gap.</figcaption></figure>
+      <figure class="reveal"><div class="fig"><img src="static/images/fig_metric_human.png" alt="Agreement of each metric with human preference" loading="lazy" style="max-width:440px;margin:0 auto"></div>
+        <figcaption><b>Agreement with human preference.</b> Spearman ρ between each metric's ranking of nine open models and their ranking by human win rate.</figcaption></figure>
     </div>
-    <h3 class="title is-5" style="margin-top:2rem">Camera-conditioned image-to-video</h3>
-    <div class="table-container">
-    <table class="table lb">
-      <thead><tr><th>Model</th><th>AxE Score ↑</th><th>Fidelity ↑</th><th>Stability ↑</th><th>Timing ↑</th><th>Content ↑</th></tr></thead>
-      <tbody>
-<tr data-g="Cam"><td>AlayaWorld</td><td><b>1.09</b></td><td><b>4.45</b></td><td>0.24</td><td>32.32</td><td><b>13.78</b></td></tr>
-<tr data-g="Cam"><td>Wan2.2-Fun-Camera</td><td>0.61</td><td>2.69</td><td>0.23</td><td><b>46.05</b></td><td>5.81</td></tr>
-<tr data-g="Cam"><td>Matrix-Game-2.0</td><td>0.67</td><td>2.66</td><td>0.25</td><td>31.03</td><td>8.58</td></tr>
-<tr data-g="Cam"><td>SANA-WM</td><td>0.39</td><td>2.65</td><td>0.15</td><td>45.88</td><td>5.73</td></tr>
-<tr data-g="Cam"><td>LingBot-World</td><td>0.02</td><td>0.99</td><td>0.02</td><td>41.24</td><td>2.41</td></tr>
-<tr data-g="Cam"><td>Evoke</td><td>0.35</td><td>0.84</td><td><b>0.42</b></td><td>44.57</td><td>1.89</td></tr>
-<tr data-g="Cam"><td>Evoke-Turbo</td><td>0.00</td><td>0.68</td><td>0.00</td><td>42.98</td><td>1.54</td></tr>
-      </tbody>
-    </table>
-    </div>
-    <p style="font-size:.9rem;color:#666">The first four text-and-image-to-video models are commercial. Complementary metrics (PSNR, motion smoothness, semantic adherence, physical commonsense, CamMC, dynamic degree, GeCo) are reported in the paper.</p>
+    <figure class="reveal"><div class="fig"><img src="static/images/fig_score_vs_gap.png" alt="Fidelity and AxE Score per model" loading="lazy"></div>
+      <figcaption><b>Fidelity and AxE Score.</b> Light markers show Fidelity, dark markers the AxE Score; Stability is printed beside each row.</figcaption></figure>
   </div>
-</section>
+</div></section>
 
-<section class="section hero is-light">
-  <div class="container is-max-widescreen">
-    <h2 class="title is-3 has-text-centered">Findings</h2>
-    <div class="figure-block">
-      <img src="static/images/fig_case_analysis.jpg" alt="Typical examples of original and variant generations" loading="lazy">
-      <p class="caption"><b>Typical examples.</b> Key frames for the original condition (left) and the variant condition (middle), with their Fidelity, next to the reference recording of the variant (right). Changed factors: observation, action semantics, and initial state.</p>
-    </div>
-    <div class="columns is-vcentered">
-      <div class="column is-7">
-        <div class="figure-block">
-          <img src="static/images/fig_pair_outcomes.png" alt="Fidelity on original vs variant conditions" loading="lazy">
-          <p class="caption"><b>Fidelity on original and variant conditions.</b> A model that generalizes scores high on both sides with a small gap; a small gap at a low score does not indicate this.</p>
-        </div>
-        <div class="figure-block">
-          <img src="static/images/fig_metric_human.png" alt="Agreement of each metric with human preference" loading="lazy" style="max-width:420px;display:block;margin:0 auto">
-          <p class="caption"><b>Agreement with human preference.</b> Spearman ρ between each metric's ranking of nine open models and their ranking by human win rate.</p>
-        </div>
-      </div>
-      <div class="column is-5">
-        <div class="figure-block">
-          <img src="static/images/fig_score_vs_gap.png" alt="Fidelity and AxE Score per model" loading="lazy">
-          <p class="caption"><b>Fidelity and AxE Score.</b> Light markers show Fidelity, dark markers the AxE Score; Stability is printed beside each row.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="section" id="BibTeX">
-  <div class="container is-max-desktop content">
-    <div class="bibtex-header">
-      <h2 class="title">BibTeX</h2>
-      <button class="copy-bibtex-btn" onclick="copyBibTeX()" title="Copy BibTeX to clipboard"><i class="fas fa-copy"></i> <span class="copy-text">Copy</span></button>
-    </div>
-    <!-- TODO: update with the arXiv / proceedings entry once available -->
-    <pre id="bibtex-code"><code>@article{xu2027axe,
+<section id="bibtex"><div class="wrap narrow reveal">
+  <div class="eyebrow">Citation</div>
+  <h2>BibTeX</h2>
+  <!-- TODO: update with the arXiv / proceedings entry once available -->
+  <pre><button id="copy">Copy</button><code id="bib">@article{xu2027axe,
   title   = {AxE: Benchmarking Agent--Environment Generalization of Video World Models via Grounded Events},
   author  = {Xu, Haiyu and Chen, Yiyang and Zhou, Jiayi and Ji, Jiaming and Dai, Juntao and Yang, Yaodong and Chen, Boyuan},
   journal = {arXiv preprint arXiv:XXXX.XXXXX},
   year    = {2026}
 }</code></pre>
-  </div>
-</section>
+</div></section>
 
-</main>
-
-<footer class="footer">
-  <div class="container">
-    <div class="columns is-centered">
-      <div class="column is-8">
-        <div class="content has-text-centered">
-          <p>This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a>, which was adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page. This website is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative Commons Attribution-ShareAlike 4.0 International License</a>.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</footer>
-<script>
-function copyBibTeX(){const t=document.getElementById('bibtex-code').innerText;navigator.clipboard.writeText(t).then(()=>{const s=document.querySelector('.copy-text');s.textContent='Copied';setTimeout(()=>s.textContent='Copy',1500)})}
-</script>
+<footer><div class="wrap">
+  This page started from the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a>, adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page. Licensed under <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">CC BY-SA 4.0</a>.
+</div></footer>
+<div id="lb"><img alt=""></div>
+<script>const AXE_DATA=[{"m": "Wan 3.0", "g": "t2v", "c": true, "fid": 13.01, "tim": 49.71, "con": 26.16, "stab": 0.55, "axe": 7.1}, {"m": "HappyHorse 1.1", "g": "t2v", "c": true, "fid": 12.55, "tim": 52.92, "con": 23.72, "stab": 0.54, "axe": 6.79}, {"m": "Kling 4.0", "g": "t2v", "c": true, "fid": 12.26, "tim": 49.92, "con": 24.56, "stab": 0.49, "axe": 5.98}, {"m": "Seedance 2.5", "g": "t2v", "c": true, "fid": 12.22, "tim": 52.26, "con": 23.38, "stab": 0.42, "axe": 5.12}, {"m": "MiniMax H3", "g": "t2v", "c": false, "fid": 10.06, "tim": 52.04, "con": 19.3, "stab": 0.39, "axe": 3.97}, {"m": "LTX-2.5-Distilled", "g": "t2v", "c": false, "fid": 5.59, "tim": 41.06, "con": 13.61, "stab": 0.35, "axe": 1.93}, {"m": "VPP2", "g": "t2v", "c": false, "fid": 2.98, "tim": 45.02, "con": 6.57, "stab": 0.18, "axe": 0.53}, {"m": "Cosmos3-Super", "g": "t2v", "c": false, "fid": 2.82, "tim": 43.31, "con": 6.52, "stab": 0.25, "axe": 0.72}, {"m": "Wan2.2-TI2V-5B", "g": "t2v", "c": false, "fid": 2.78, "tim": 38.75, "con": 7.18, "stab": 0.3, "axe": 0.84}, {"m": "HunyuanVideo-1.5", "g": "t2v", "c": false, "fid": 1.73, "tim": 42.39, "con": 4.09, "stab": 0.18, "axe": 0.31}, {"m": "Cosmos-Predict2.5-2B", "g": "t2v", "c": false, "fid": 1.57, "tim": 44.75, "con": 3.52, "stab": 0.37, "axe": 0.59}, {"m": "GigaWorld-0", "g": "t2v", "c": false, "fid": 1.49, "tim": 40.95, "con": 3.61, "stab": 0.19, "axe": 0.28}, {"m": "Cosmos3-Nano", "g": "t2v", "c": false, "fid": 1.48, "tim": 42.19, "con": 3.52, "stab": 0.03, "axe": 0.04}, {"m": "AlayaWorld", "g": "cam", "c": false, "fid": 4.45, "tim": 32.32, "con": 13.78, "stab": 0.24, "axe": 1.09}, {"m": "Wan2.2-Fun-Camera", "g": "cam", "c": false, "fid": 2.69, "tim": 46.05, "con": 5.81, "stab": 0.23, "axe": 0.61}, {"m": "Matrix-Game-2.0", "g": "cam", "c": false, "fid": 2.66, "tim": 31.03, "con": 8.58, "stab": 0.25, "axe": 0.67}, {"m": "SANA-WM", "g": "cam", "c": false, "fid": 2.65, "tim": 45.88, "con": 5.73, "stab": 0.15, "axe": 0.39}, {"m": "LingBot-World", "g": "cam", "c": false, "fid": 0.99, "tim": 41.24, "con": 2.41, "stab": 0.02, "axe": 0.02}, {"m": "Evoke", "g": "cam", "c": false, "fid": 0.84, "tim": 44.57, "con": 1.89, "stab": 0.42, "axe": 0.35}, {"m": "Evoke-Turbo", "g": "cam", "c": false, "fid": 0.68, "tim": 42.98, "con": 1.54, "stab": 0.0, "axe": 0.0}];</script>
+<script src="static/js/axe.js"></script>
 </body>
 </html>

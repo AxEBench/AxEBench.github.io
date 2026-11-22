@@ -6,13 +6,19 @@ const secs=$$('section[id]'),links=$$('nav .links a');
 addEventListener('scroll',()=>{const h=document.documentElement;$('#progress').style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%';
  let cur='';secs.forEach(s=>{if(s.getBoundingClientRect().top<120)cur=s.id});links.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+cur))},{passive:true});
 // explorer
-const V={'00':['Original','var(--ok)','Original task: the marker stays wrapped while it is moved. The model succeeds.'],
-'10':['Agent changed','var(--agent)','The action changes to removing the marker. A second marker appears.'],
-'01':['Environment changed','var(--env)','The towel becomes paper. The wrapping opens mid-way.'],
-'11':['Agent × Environment','var(--joint)','Both change at once. Black gloves appear from nowhere.']};
-function ex(){const k=($('#tgA').getAttribute('aria-pressed')==='true'?'1':'0')+($('#tgE').getAttribute('aria-pressed')==='true'?'1':'0');
- $$('.stage img').forEach(i=>i.classList.toggle('on',i.dataset.k===k));const v=V[k];const r=$('#regime');r.textContent=v[0];r.style.color=v[1];$('#verdict').textContent=v[2]}
-['#tgA','#tgE'].forEach(s=>$(s).onclick=e=>{const b=e.currentTarget;b.setAttribute('aria-pressed',b.getAttribute('aria-pressed')!=='true');ex()});ex();
+const V={'00':['Original','var(--ok)','original','Keep the marker wrapped with towel while moving it','<b>What happens:</b> the marker stays wrapped while it is moved.'],
+'10':['Agent changed','var(--agent)','agent','<mark>Remove</mark> the marker from its wrapping','<b>What goes wrong:</b> a second marker appears.'],
+'01':['Environment changed','var(--env)','env','Keep the marker wrapped with <mark class="e">paper</mark>','<b>What goes wrong:</b> the wrapping opens mid-way.'],
+'11':['Agent × Environment','var(--joint)','joint','<mark>Remove</mark> the marker from its <mark class="e">paper wrapping</mark>','<b>What goes wrong:</b> black gloves appear on the hands.']};
+const vR=$('#vRef'),vG=$('#vGen');let playing=true;
+function ex(){const k=($('#tgA').getAttribute('aria-pressed')==='true'?'1':'0')+($('#tgE').getAttribute('aria-pressed')==='true'?'1':'0');const v=V[k];
+ const r=$('#regime');r.textContent=v[0];r.style.color=v[1];$('#task').innerHTML=v[3];$('#verdict').innerHTML=v[4];
+ [[vR,'ref'],[vG,'gen']].forEach(([el,n])=>{el.poster=`static/videos/${n}_${v[2]}.jpg`;el.src=`static/videos/${n}_${v[2]}.mp4`;el.currentTime=0;if(playing)el.play().catch(()=>{})})}
+['#tgA','#tgE'].forEach(s=>$(s).onclick=e=>{const b=e.currentTarget;b.setAttribute('aria-pressed',b.getAttribute('aria-pressed')!=='true');ex()});
+$('#vplay').onclick=()=>{playing=!playing;[vR,vG].forEach(v=>playing?v.play().catch(()=>{}):v.pause());$('#vplay').innerHTML=playing?'<i class="fas fa-pause"></i>':'<i class="fas fa-play"></i>'};
+vR.addEventListener('timeupdate',()=>{if(vR.duration){$('#vseek').value=vR.currentTime/vR.duration*1000;$('#vtime').textContent=vR.currentTime.toFixed(1)+' s';if(Math.abs(vG.currentTime-vR.currentTime)>.4&&vG.duration)vG.currentTime=Math.min(vR.currentTime,vG.duration-.05)}});
+$('#vseek').oninput=e=>{if(vR.duration){const t=e.target.value/1000*vR.duration;vR.currentTime=t;if(vG.duration)vG.currentTime=Math.min(t,vG.duration-.05)}};
+ex();
 // reveal + count-up
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;e.target.classList.add('in');io.unobserve(e.target);
  e.target.querySelectorAll('[data-count]').forEach(b=>{const n=+b.dataset.count,t0=performance.now();(function f(t){const p=Math.min(1,(t-t0)/1100),v=Math.round(n*(1-Math.pow(1-p,3)));b.textContent=v.toLocaleString('en-US');if(p<1)requestAnimationFrame(f)})(t0)})}),{threshold:.12});

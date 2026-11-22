@@ -79,3 +79,12 @@ pre{background:var(--card);border:1px solid var(--line);border-radius:12px;paddi
 #copy{position:absolute;top:10px;right:10px;font:inherit;font-size:.8rem;padding:5px 12px;border-radius:999px;border:1px solid var(--line);background:var(--bg);color:var(--text);cursor:pointer}
 footer{border-top:1px solid var(--line);padding:28px 0;color:var(--muted);font-size:.82rem;text-align:center}
 #lb{position:fixed;inset:0;background:rgba(5,8,18,.92);display:none;align-items:center;justify-content:center;z-index:100;cursor:zoom-out;padding:24px}#lb.on{display:flex}#lb img{max-width:100%;max-height:100%;background:#fff;border-radius:10px;padding:8px}
+
+.task{display:flex;gap:12px;align-items:baseline;margin:4px 0 14px;font-size:1.05rem;font-weight:600}.task .tl{font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.task mark{background:none;color:var(--agent);border-bottom:2px solid var(--agent);padding:0}.task mark.e{color:var(--env);border-color:var(--env)}
+.vids{display:grid;grid-template-columns:1fr 1fr;gap:14px}@media(max-width:640px){.vids{grid-template-columns:1fr}}
+.vid{margin:0}.vid video{width:100%;aspect-ratio:16/9;object-fit:cover;background:#000;border-radius:12px;display:block;border:1px solid var(--line)}
+.vid figcaption{margin-top:6px;font-size:.82rem}
+.vctl{display:flex;align-items:center;gap:12px;margin-top:12px}.vctl button{width:36px;height:36px;border-radius:50%;border:1px solid var(--line);background:var(--bg);color:var(--text);cursor:pointer}
+.vctl input{flex:1;accent-color:var(--env)}#vtime{font-variant-numeric:tabular-nums;color:var(--muted);font-size:.85rem;min-width:52px;text-align:right}
+.verdict b{color:var(--text)}

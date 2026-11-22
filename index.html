@@ -56,12 +56,12 @@
       <button class="tg e" id="tgE" aria-pressed="false"><span class="sw"></span>Change the environment</button>
       <span class="regime" id="regime">Original</span>
     </div>
-    <div class="stage">
-      <img class="on" data-k="00" src="static/images/pair_original.jpg" alt="Original task: keep the marker wrapped in a towel while moving it">
-      <img data-k="10" src="static/images/pair_agent.jpg" alt="Agent changed: remove the marker from its wrapping">
-      <img data-k="01" src="static/images/pair_env.jpg" alt="Environment changed: marker wrapped with paper">
-      <img data-k="11" src="static/images/pair_joint.jpg" alt="Joint change: remove the marker from its paper wrapping">
+    <div class="task"><span class="tl">Task</span><span id="task"></span></div>
+    <div class="vids">
+      <figure class="vid"><video id="vRef" muted loop playsinline preload="metadata"></video><figcaption><b>Reference</b> · real recording</figcaption></figure>
+      <figure class="vid"><video id="vGen" muted loop playsinline preload="metadata"></video><figcaption><b>Generated</b> · MiniMax H3, from the same first frame</figcaption></figure>
     </div>
+    <div class="vctl"><button id="vplay" aria-label="Play or pause"><i class="fas fa-pause"></i></button><input id="vseek" type="range" min="0" max="1000" value="0" aria-label="Seek"><span id="vtime">0.0 s</span></div>
     <div class="verdict" id="verdict"></div>
   </div>
 </div></header>

@@ -25,7 +25,7 @@ h1 .grad{background:linear-gradient(90deg,var(--agent),var(--joint),var(--env));
 .authors .aff{color:var(--muted);font-size:.9rem;margin-top:8px}
 .btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
 .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 18px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--text);font-weight:600;font-size:.92rem;transition:transform .15s,border-color .15s}
-.btn:hover{transform:translateY(-2px);border-color:var(--env);text-decoration:none}.btn.primary{background:var(--text);color:var(--bg);border-color:var(--text)}
+.btn:hover{transform:translateY(-2px);border-color:var(--env);text-decoration:none}.btn.primary{background:#e3b341;color:#1a1405;border-color:#e3b341}.btn.primary:hover{border-color:#f2cc60;background:#f2cc60}
 .btn.soon{opacity:.5;pointer-events:none}
 section{padding:64px 0}section.alt{background:var(--bg2)}
 h2{font-size:clamp(1.5rem,3vw,2.1rem);margin:.3rem 0 1rem;letter-spacing:-.01em}

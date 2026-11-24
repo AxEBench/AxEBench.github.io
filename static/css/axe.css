@@ -90,10 +90,8 @@ footer{border-top:1px solid var(--line);padding:28px 0;color:var(--muted);font-s
 .verdict b{color:var(--text)}
 
 /* WBench-plus results */
-#wbench-plus h3{font-size:1.05rem;margin:28px 0 10px}
-#wbench-plus .wb-table{min-width:760px}
-#wbench-plus .wb-table th[scope="row"]{text-align:left;font-weight:600}
-#wbench-plus .wb-table thead th{cursor:default}
 #wbench-plus .note{max-width:900px}
-
-.wb-comparison{margin-top:30px}.wb-comparison summary{cursor:pointer;font-weight:700;color:var(--env)}.wb-comparison h4{margin:24px 0 10px}.wb-events{min-width:900px}.wb-events th:first-child,.wb-events td:first-child{text-align:left;width:auto;color:var(--text)}.wb-events thead th{cursor:default}
+.wb-comparison{margin-top:30px}.wb-comparison summary{cursor:pointer;font-weight:700;color:var(--env)}.wb-comparison h4{margin:24px 0 10px}
+.wb-events{min-width:720px}.wb-events thead th{cursor:default}.wb-events th,.wb-events td{text-align:right;width:auto;color:var(--text)}
+.wb-events th:first-child,.wb-events tbody th{text-align:left;font-weight:600}.wb-events thead th{color:var(--muted)}.wb-events thead th.grp{text-align:center;border-bottom:1px solid var(--line)}
+.wb-events thead tr:first-child th{border-bottom:none}.wb-events thead tr:first-child th.grp{border-bottom:1px solid var(--line)}

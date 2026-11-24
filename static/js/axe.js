@@ -23,15 +23,16 @@ ex();
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;e.target.classList.add('in');io.unobserve(e.target);
  e.target.querySelectorAll('[data-count]').forEach(b=>{const n=+b.dataset.count,t0=performance.now();(function f(t){const p=Math.min(1,(t-t0)/1100),v=Math.round(n*(1-Math.pow(1-p,3)));b.textContent=v.toLocaleString('en-US');if(p<1)requestAnimationFrame(f)})(t0)})}),{threshold:.12});
 $$('.reveal').forEach(e=>io.observe(e));
-// leaderboard
-let g='t2v',key='axe',dir=-1;const cols=['axe','fid','stab','tim','con'];
-function draw(){const rows=AXE_DATA.filter(d=>d.g===g).sort((a,b)=>key==='m'?dir*a.m.localeCompare(b.m)*-1:dir*(a[key]-b[key]));
- const all=AXE_DATA.filter(d=>d.g===g),best={},mx=Math.max(...all.map(d=>d.axe));cols.forEach(c=>best[c]=Math.max(...all.map(d=>d[c])));
- $('#lbody').innerHTML=rows.map((d,i)=>`<tr><td>${i+1}</td><td>${d.m}${d.c?'<span class="tag">COMMERCIAL</span>':''}</td><td class="bar"><i style="width:${Math.max(2,d.axe/mx*60)}%"></i><em>${d.axe.toFixed(2)}</em></td>`+
-  ['fid','stab','tim','con'].map(c=>`<td class="${d[c]===best[c]?'best':''}">${d[c].toFixed(2)}</td>`).join('')+'</tr>').join('');
- $$('thead th[data-k]').forEach(th=>{const on=th.dataset.k===key;th.classList.toggle('sorted',on);th.querySelector('.ar')?.remove();if(on)th.insertAdjacentHTML('beforeend',`<span class="ar">${dir<0?'↓':'↑'}</span>`)})}
-$$('thead th[data-k]').forEach(th=>th.onclick=()=>{if(key===th.dataset.k)dir=-dir;else{key=th.dataset.k;dir=-1}draw()});
-$$('.tab').forEach(t=>t.onclick=()=>{g=t.dataset.g;$$('.tab').forEach(x=>x.classList.toggle('on',x===t));draw()});draw();
+// leaderboards (main AxE Bench + WBench-plus share the same renderer)
+function board(root,data){if(!root||!data)return;let g='t2v',key='axe',dir=-1;const cols=['axe','fid','stab','tim','con'],tb=root.querySelector('.lbwrap tbody'),ths=[...root.querySelectorAll('thead th[data-k]')],tabs=[...root.querySelectorAll('.tab')];
+ function draw(){const all=data.filter(d=>d.g===g),rows=[...all].sort((a,b)=>key==='m'?dir*a.m.localeCompare(b.m)*-1:dir*(a[key]-b[key]));
+  const best={},mx=Math.max(...all.map(d=>d.axe));cols.forEach(c=>best[c]=Math.max(...all.map(d=>d[c])));
+  tb.innerHTML=rows.map((d,i)=>`<tr><td>${i+1}</td><td>${d.m}${d.c?'<span class="tag">COMMERCIAL</span>':''}</td><td class="bar"><i style="width:${Math.max(2,d.axe/mx*60)}%"></i><em>${d.axe.toFixed(2)}</em></td>`+
+   ['fid','stab','tim','con'].map(c=>`<td class="${d[c]===best[c]?'best':''}">${d[c].toFixed(2)}</td>`).join('')+'</tr>').join('');
+  ths.forEach(th=>{const on=th.dataset.k===key;th.classList.toggle('sorted',on);th.querySelector('.ar')?.remove();if(on)th.insertAdjacentHTML('beforeend',`<span class="ar">${dir<0?'↓':'↑'}</span>`)})}
+ ths.forEach(th=>th.onclick=()=>{if(key===th.dataset.k)dir=-dir;else{key=th.dataset.k;dir=-1}draw()});
+ tabs.forEach(t=>t.onclick=()=>{g=t.dataset.g;tabs.forEach(x=>x.classList.toggle('on',x===t));draw()});draw()}
+board($('#leaderboard'),typeof AXE_DATA!=='undefined'&&AXE_DATA);board($('#wbench-plus'),typeof WB_DATA!=='undefined'&&WB_DATA);
 // lightbox
 $$('figure .fig img').forEach(i=>i.parentElement.onclick=()=>{$('#lb img').src=i.src;$('#lb').classList.add('on')});
 $('#lb').onclick=()=>$('#lb').classList.remove('on');addEventListener('keydown',e=>{if(e.key==='Escape')$('#lb').classList.remove('on')});

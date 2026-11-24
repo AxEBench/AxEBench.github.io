@@ -95,3 +95,5 @@ footer{border-top:1px solid var(--line);padding:28px 0;color:var(--muted);font-s
 #wbench-plus .wb-table th[scope="row"]{text-align:left;font-weight:600}
 #wbench-plus .wb-table thead th{cursor:default}
 #wbench-plus .note{max-width:900px}
+
+.wb-comparison{margin-top:30px}.wb-comparison summary{cursor:pointer;font-weight:700;color:var(--env)}.wb-comparison h4{margin:24px 0 10px}.wb-events{min-width:900px}.wb-events th:first-child,.wb-events td:first-child{text-align:left;width:auto;color:var(--text)}.wb-events thead th{cursor:default}

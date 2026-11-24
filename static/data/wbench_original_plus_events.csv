@@ -1,0 +1,45 @@
+model,model_group,set,fidelity,timing,content
+Kling 4.0,Commercial models,Original,26.33,41.96,62.31
+Kling 4.0,Commercial models,Plus,27.80,41.81,65.89
+Seedance 2.5,Commercial models,Original,26.22,42.99,60.75
+Seedance 2.5,Commercial models,Plus,27.02,44.02,60.91
+Wan 3.0,Commercial models,Original,24.32,42.11,57.32
+Wan 3.0,Commercial models,Plus,24.70,42.90,57.07
+HappyHorse 1.1,Commercial models,Original,22.74,38.34,59.08
+HappyHorse 1.1,Commercial models,Plus,21.68,38.21,56.59
+MiniMax H3,Text-and-image-to-video,Original,19.48,45.67,42.48
+MiniMax H3,Text-and-image-to-video,Plus,17.55,43.22,40.32
+LTX-2.5-Distilled,Text-and-image-to-video,Original,15.94,38.82,39.73
+LTX-2.5-Distilled,Text-and-image-to-video,Plus,17.14,43.73,38.28
+Cosmos3-Super,Text-and-image-to-video,Original,16.39,38.50,42.33
+Cosmos3-Super,Text-and-image-to-video,Plus,15.63,40.82,38.16
+GigaWorld-0,Text-and-image-to-video,Original,16.50,49.51,33.33
+GigaWorld-0,Text-and-image-to-video,Plus,15.15,47.79,31.57
+HunyuanVideo-1.5,Text-and-image-to-video,Original,15.50,36.80,42.13
+HunyuanVideo-1.5,Text-and-image-to-video,Plus,14.15,38.20,36.95
+VPP2,Text-and-image-to-video,Original,16.39,39.19,41.81
+VPP2,Text-and-image-to-video,Plus,13.30,39.36,33.65
+Wan2.2-TI2V-5B,Text-and-image-to-video,Original,10.07,42.42,22.37
+Wan2.2-TI2V-5B,Text-and-image-to-video,Plus,7.38,42.92,16.37
+Cosmos3-Nano,Text-and-image-to-video,Original,10.06,34.20,29.13
+Cosmos3-Nano,Text-and-image-to-video,Plus,8.17,34.54,23.37
+Cosmos-Predict2.5-2B,Text-and-image-to-video,Original,9.36,43.57,20.61
+Cosmos-Predict2.5-2B,Text-and-image-to-video,Plus,7.08,44.46,15.30
+EchoWM,Text-and-image-to-video,Original,4.61,24.99,18.45
+EchoWM,Text-and-image-to-video,Plus,5.51,26.91,20.48
+Wan2.2-Fun-Camera,Camera-conditioned image-to-video,Original,28.42,50.88,55.86
+Wan2.2-Fun-Camera,Camera-conditioned image-to-video,Plus,34.35,59.41,57.57
+SANA-WM,Camera-conditioned image-to-video,Original,31.15,64.25,47.74
+SANA-WM,Camera-conditioned image-to-video,Plus,28.09,64.47,43.10
+EchoWM Flash,Camera-conditioned image-to-video,Original,26.41,39.72,66.50
+EchoWM Flash,Camera-conditioned image-to-video,Plus,26.77,42.57,62.44
+Matrix-Game-2.0,Camera-conditioned image-to-video,Original,21.65,59.22,35.38
+Matrix-Game-2.0,Camera-conditioned image-to-video,Plus,24.52,59.35,41.32
+LingBot-World,Camera-conditioned image-to-video,Original,20.09,41.52,47.95
+LingBot-World,Camera-conditioned image-to-video,Plus,21.44,43.25,49.59
+Evoke,Camera-conditioned image-to-video,Original,14.76,28.07,51.85
+Evoke,Camera-conditioned image-to-video,Plus,12.82,26.89,45.49
+Evoke-Turbo,Camera-conditioned image-to-video,Original,15.45,30.09,50.00
+Evoke-Turbo,Camera-conditioned image-to-video,Plus,11.91,26.37,44.44
+AlayaWorld,Camera-conditioned image-to-video,Original,9.87,37.88,26.06
+AlayaWorld,Camera-conditioned image-to-video,Plus,9.13,35.65,25.62
